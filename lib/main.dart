@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ne_first_look/dashboard.dart';
 
 void main() => runApp(MyApp());
 
@@ -68,13 +69,12 @@ class LoginState extends State<CustomerLogin>
                         color: Colors.black,
                       ),
                       decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                            borderSide: new BorderSide(color: Colors.teal)),
-                        hintStyle: TextStyle(color: Colors.black),
-                        hintText: "Username",
-                        labelText: "Enter username",
-                        prefixIcon: new Icon(Icons.alternate_email)
-                      ),
+                          border: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.teal)),
+                          hintStyle: TextStyle(color: Colors.black),
+                          hintText: "Username",
+                          labelText: "Enter username",
+                          prefixIcon: new Icon(Icons.alternate_email)),
                       keyboardType: TextInputType.emailAddress,
                     ),
                     new Padding(
@@ -83,13 +83,12 @@ class LoginState extends State<CustomerLogin>
                     new TextFormField(
                       style: TextStyle(color: Colors.black),
                       decoration: new InputDecoration(
-                        border: new OutlineInputBorder(
-                            borderSide: new BorderSide(color: Colors.teal)),
-                        hintStyle: TextStyle(color: Colors.black),
-                        hintText: "Password",
-                        labelText: "Enter Password",
-                        prefixIcon: new Icon(Icons.lock)
-                      ),
+                          border: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.teal)),
+                          hintStyle: TextStyle(color: Colors.black),
+                          hintText: "Password",
+                          labelText: "Enter Password",
+                          prefixIcon: new Icon(Icons.lock)),
                       keyboardType: TextInputType.text,
                       obscureText: true,
                     ),
@@ -100,7 +99,12 @@ class LoginState extends State<CustomerLogin>
                       color: Colors.teal,
                       textColor: Colors.white,
                       child: new Text('Login'),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => new Dashboard()));
+                      },
                     )
                   ],
                 ),

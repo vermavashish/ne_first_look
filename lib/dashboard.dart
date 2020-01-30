@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ne_first_look/pages/collection_list.dart';
+import 'package:ne_first_look/pages/fi_list.dart';
 import 'package:toast/toast.dart';
 
 class Dashboard extends StatelessWidget {
@@ -69,8 +71,10 @@ class Dashboard extends StatelessWidget {
                   flex: 2,
                   child: InkWell(
                     onTap: () {
-                      Toast.show("Collected", context,
-                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new CollectionList()));
                     },
                     child: _dashTile(
                         color: Colors.amberAccent,
@@ -85,8 +89,10 @@ class Dashboard extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      Toast.show("FI", context,
-                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      Navigator.push(
+                          context,
+                          new MaterialPageRoute(
+                              builder: (context) => new FIList()));
                     },
                     child: _dashTile(
                         color: Colors.green,

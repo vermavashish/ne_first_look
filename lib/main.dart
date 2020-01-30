@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ne_first_look/dashboard.dart';
+import 'package:ne_first_look/services/call_locator.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -64,34 +68,11 @@ class LoginState extends State<CustomerLogin>
                 child: new Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    new TextFormField(
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                      decoration: new InputDecoration(
-                          border: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.teal)),
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "Username",
-                          labelText: "Enter username",
-                          prefixIcon: new Icon(Icons.alternate_email)),
-                      keyboardType: TextInputType.emailAddress,
-                    ),
+                    emailField(),
                     new Padding(
                       padding: const EdgeInsets.only(top: 20),
                     ),
-                    new TextFormField(
-                      style: TextStyle(color: Colors.black),
-                      decoration: new InputDecoration(
-                          border: new OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.teal)),
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "Password",
-                          labelText: "Enter Password",
-                          prefixIcon: new Icon(Icons.lock)),
-                      keyboardType: TextInputType.text,
-                      obscureText: true,
-                    ),
+                    passwordField(),
                     new Padding(
                       padding: const EdgeInsets.only(top: 40.0),
                     ),
@@ -113,6 +94,37 @@ class LoginState extends State<CustomerLogin>
           ],
         ),
       ),
+    );
+  }
+
+  Widget emailField() {
+    return TextField(
+      style: TextStyle(
+        color: Colors.black,
+      ),
+      keyboardType: TextInputType.emailAddress,
+      decoration: new InputDecoration(
+          border: new OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.teal)),
+          hintStyle: TextStyle(color: Colors.black),
+          hintText: "Username",
+          labelText: "Enter username",
+          prefixIcon: new Icon(Icons.alternate_email)),
+    );
+  }
+
+  Widget passwordField() {
+    return TextField(
+      style: TextStyle(color: Colors.black),
+      decoration: new InputDecoration(
+          border: new OutlineInputBorder(
+              borderSide: new BorderSide(color: Colors.teal)),
+          hintStyle: TextStyle(color: Colors.black),
+          hintText: "Password",
+          labelText: "Enter Password",
+          prefixIcon: new Icon(Icons.lock)),
+      keyboardType: TextInputType.text,
+      obscureText: true,
     );
   }
 }

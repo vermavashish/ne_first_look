@@ -11,9 +11,9 @@ class Validators{
     }
   );
 
-  final validatePassword = StreamTransformer.fromHandlers(
+  final validatePassword = StreamTransformer<String,String>.fromHandlers(
     handleData: (password, sink) {
-      if(password.lenght>6){
+      if(password.length>=6){
         sink.add(password);
       } else{
         sink.addError('Password must be of atleast 6 charachters');

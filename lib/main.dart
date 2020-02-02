@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ne_first_look/dashboard.dart';
 import 'package:ne_first_look/services/call_locator.dart';
+import 'bloc/bloc.dart';
 
 void main() {
   setupLocator();
@@ -98,33 +99,47 @@ class LoginState extends State<CustomerLogin>
   }
 
   Widget emailField() {
-    return TextField(
-      style: TextStyle(
-        color: Colors.black,
-      ),
-      keyboardType: TextInputType.emailAddress,
-      decoration: new InputDecoration(
-          border: new OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.teal)),
-          hintStyle: TextStyle(color: Colors.black),
-          hintText: "Username",
-          labelText: "Enter username",
-          prefixIcon: new Icon(Icons.alternate_email)),
+    return StreamBuilder(
+      stream: bloc.email,
+      builder: (context, snapshot) {
+        return TextField(
+          onChanged: bloc.changeEmail,
+          style: TextStyle(
+            color: Colors.black,
+          ),
+          keyboardType: TextInputType.emailAddress,
+          decoration: new InputDecoration(
+              border: new OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.teal)),
+              hintStyle: TextStyle(color: Colors.black),
+              hintText: "Username",
+              labelText: "Enter username",
+              errorText: snapshot.error,
+              prefixIcon: new Icon(Icons.alternate_email)),
+        );
+      },
     );
   }
 
   Widget passwordField() {
-    return TextField(
-      style: TextStyle(color: Colors.black),
-      decoration: new InputDecoration(
-          border: new OutlineInputBorder(
-              borderSide: new BorderSide(color: Colors.teal)),
-          hintStyle: TextStyle(color: Colors.black),
-          hintText: "Password",
-          labelText: "Enter Password",
-          prefixIcon: new Icon(Icons.lock)),
-      keyboardType: TextInputType.text,
-      obscureText: true,
+    return StreamBuilder(
+      stream: bloc.password,
+      builder: (context, snapshot) {
+        return TextField(
+          onChanged: bloc.changePassword,
+          style: TextStyle(color: Colors.black),
+          decoration: new InputDecoration(
+              border: new OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.teal)),
+              hintStyle: TextStyle(color: Colors.black),
+              hintText: "Password",
+              errorText: snapshot.error,
+              labelText: "Enter Password",
+              prefixIcon: new Icon(Icons.lock)),
+          keyboardType: TextInputType.text,
+          obscureText: true,
+        );
+      },
     );
   }
 }

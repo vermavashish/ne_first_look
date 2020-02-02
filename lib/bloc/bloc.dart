@@ -3,8 +3,8 @@ import 'validators.dart';
 
 
 class Bloc extends Validators{
-  final _email = StreamController<String>();
-  final _password = StreamController<String>();
+  StreamController<String> _email = StreamController<String>.broadcast();
+  StreamController<String> _password = StreamController<String>.broadcast();
 
   //Add data to stream
   Stream<String> get email => _email.stream.transform(validateEmail);
@@ -20,3 +20,5 @@ class Bloc extends Validators{
     _password.close();
   }
 }
+
+final bloc = Bloc();

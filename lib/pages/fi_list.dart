@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ne_first_look/pages/fi2.dart';
 import 'package:ne_first_look/pages/fi_begin.dart';
 
 class FIList extends StatelessWidget {
@@ -62,10 +63,17 @@ class PendingFIListState extends State<PendingFIList> {
                       child: Text('${_items[index]}'),
                     ),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => new FI()));
+                      if (index % 2 == 0) {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => new FI()));
+                      } else {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => new FIList2()));
+                      }
                     },
                   );
                 },

@@ -63,17 +63,10 @@ class PendingFIListState extends State<PendingFIList> {
                       child: Text('${_items[index]}'),
                     ),
                     onTap: () {
-                      if (index % 2 == 0) {
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
                                 builder: (context) => new FI()));
-                      } else {
-                        Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => new FIList2()));
-                      }
                     },
                   );
                 },

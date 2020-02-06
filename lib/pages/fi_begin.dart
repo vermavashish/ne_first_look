@@ -7,6 +7,7 @@ Developer: Ashish Verma
 
 import 'package:flutter/material.dart';
 import 'package:ne_first_look/pages/fi.dart';
+import 'package:ne_first_look/pages/fi2.dart';
 import 'package:ne_first_look/services/call_locator.dart';
 import 'package:ne_first_look/services/call_service.dart';
 import 'package:image_picker/image_picker.dart';
@@ -192,7 +193,7 @@ class FIPageState extends State<FIPage> {
                                 Navigator.push(
                                     context,
                                     new MaterialPageRoute(
-                                        builder: (context) => new FIForm()));
+                                        builder: (context) => new FI2()));
                               },
                             ),
                           ],

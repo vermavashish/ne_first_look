@@ -5,6 +5,8 @@ Description: This file displays the field investigation questions and reports ba
 Developer: Ashish Verma
 */
 
+//This page is no longer in use.
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:toast/toast.dart';

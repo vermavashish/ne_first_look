@@ -8,7 +8,10 @@ Developer: Ashish Verma
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-int count = 0;
+int count = -1;
+
+
+List<Color> objColor = new List(35);
 
 class FI2 extends StatelessWidget {
   @override
@@ -37,6 +40,15 @@ class FIFormstate2 extends State<FIForm2> {
   var picture;
   var gallery;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    for(int i=0; i<35; i++){
+      objColor[i] = Colors.white;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -55,11 +67,11 @@ class FIFormstate2 extends State<FIForm2> {
               questionForm("1. Is Residence Owned by Borrower?"),                           //Questtion 1
               Row(
                 children: <Widget>[
-                  optionCard(color, "YES", count),
+                  optionCard(objColor[++count], "YES", count),
                   SizedBox(
                     width: 35.0,
                   ),
-                  optionCard(color, "NO", count),
+                  optionCard(objColor[++count], "NO", count),
                 ],
               ),
               const SizedBox(
@@ -76,15 +88,15 @@ class FIFormstate2 extends State<FIForm2> {
               questionForm("3. How is living Standard of the Borrower?"),                    //Questtion 3
               Row(
                 children: <Widget>[
-                  optionCard(color, "GOOD", count),
+                  optionCard(objColor[++count], "GOOD", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "AVERAGE", count),
+                  optionCard(objColor[++count], "AVERAGE", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "POOR", count),
+                  optionCard(objColor[++count], "POOR", count),
                 ],
               ),
               const SizedBox(
@@ -93,11 +105,11 @@ class FIFormstate2 extends State<FIForm2> {
               questionForm("4. Is address in Negative Area?"),                                 //Questtion 4
               Row(
                 children: <Widget>[
-                  optionCard(color, "YES", count),
+                  optionCard(objColor[++count], "YES", count),
                   SizedBox(
                     width: 35.0,
                   ),
-                  optionCard(color, "NO", count),
+                  optionCard(objColor[++count], "NO", count),
                 ],
               ),
               const SizedBox(
@@ -167,7 +179,7 @@ class FIFormstate2 extends State<FIForm2> {
                   ),
                   //const SizedBox(width: 5.0,),
                   Text(
-                    "Have Checked the mentioned office and residence number during the FI",
+                    "Same as Residence address",
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
                   )
                 ],
@@ -199,15 +211,15 @@ class FIFormstate2 extends State<FIForm2> {
               questionForm("8. Behaviour of the Borrower"),                             //Questtion 8
               Row(
                 children: <Widget>[
-                  optionCard(color, "GOOD", count),
+                  optionCard(objColor[++count], "GOOD", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "AVERAGE", count),
+                  optionCard(objColor[++count], "AVERAGE", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "POOR", count),
+                  optionCard(objColor[++count], "POOR", count),
                 ],
               ),
               const SizedBox(
@@ -216,15 +228,15 @@ class FIFormstate2 extends State<FIForm2> {
               questionForm("9. Physical appearance of the Borrower"),                     //Questtion 9
               Row(
                 children: <Widget>[
-                  optionCard(color, "GOOD", count),
+                  optionCard(objColor[++count], "GOOD", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "AVERAGE", count),
+                  optionCard(objColor[++count], "AVERAGE", count),
                   SizedBox(
                     width: 2.0,
                   ),
-                  optionCard(color, "POOR", count),
+                  optionCard(objColor[++count], "POOR", count),
                 ],
               ),
               const SizedBox(
@@ -602,7 +614,12 @@ class FIFormstate2 extends State<FIForm2> {
     }
   }
 
-  Widget optionCard(Color col, String text, int count) {
+  Widget optionCard(Color col, String text, int id) {
+
+    if(id==13){
+      count =0;
+    }
+    
     return Container(
       padding: const EdgeInsets.all(8.0),
       height: 65.0,
@@ -610,7 +627,7 @@ class FIFormstate2 extends State<FIForm2> {
       child: InkWell(
         onTap: () {
           setState(() {
-            col = Colors.teal;
+            objColor[id] = Colors.teal;
           });
         },
         child: Card(
@@ -626,7 +643,7 @@ class FIFormstate2 extends State<FIForm2> {
                 color: Colors.grey),
           )),
           elevation: 10.0,
-          color: col,
+          color: objColor[id],
         ),
       ),
     );

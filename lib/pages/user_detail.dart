@@ -81,8 +81,6 @@ class UserDetailState extends State<UserDetail> {
             _userHead(context),
             Container(
               //color: Colors.white,
-              height: MediaQuery.of(context).size.height +
-                  MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width,
               //padding: const EdgeInsets.fromLTRB(200.0, 200, 200, 270),
               decoration: BoxDecoration(
@@ -318,41 +316,48 @@ class UserDetailState extends State<UserDetail> {
                   ),
                   Visibility(
                     visible: isCollectVisible,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: Column(
                       children: <Widget>[
-                        new RaisedButton(
-                          padding: const EdgeInsets.all(16.0),
-                          textColor: Colors.white,
-                          color: Colors.teal[300],
-                          child: Center(child: Text('Cash')),
-                          onPressed: () {
-                            _collectionWidget(1);
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            new RaisedButton(
+                              padding: const EdgeInsets.all(16.0),
+                              textColor: Colors.white,
+                              color: Colors.teal[300],
+                              child: Center(child: Text('Cash')),
+                              onPressed: () {
+                                _collectionWidget(1);
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0)),
+                            ),
+                            new RaisedButton(
+                              padding: const EdgeInsets.all(16.0),
+                              textColor: Colors.white,
+                              color: Colors.teal[300],
+                              child: Center(child: Text('Cheque')),
+                              onPressed: () {
+                                _collectionWidget(2);
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0)),
+                            ),
+                            new RaisedButton(
+                              padding: const EdgeInsets.all(16.0),
+                              textColor: Colors.white,
+                              color: Colors.teal[300],
+                              child: Center(child: Text('Transfer')),
+                              onPressed: () {
+                                _collectionWidget(3);
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0)),
+                            ),
+                          ],
                         ),
-                        new RaisedButton(
-                          padding: const EdgeInsets.all(16.0),
-                          textColor: Colors.white,
-                          color: Colors.teal[300],
-                          child: Center(child: Text('Cheque')),
-                          onPressed: () {
-                            _collectionWidget(2);
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0)),
-                        ),
-                        new RaisedButton(
-                          padding: const EdgeInsets.all(16.0),
-                          textColor: Colors.white,
-                          color: Colors.teal[300],
-                          child: Center(child: Text('Transfer')),
-                          onPressed: () {
-                            _collectionWidget(3);
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0)),
+                        const SizedBox(
+                          height: 16.0,
                         ),
                       ],
                     ),
